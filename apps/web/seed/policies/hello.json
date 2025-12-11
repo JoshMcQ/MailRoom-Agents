@@ -1,0 +1,32 @@
+{
+  "agent": {
+    "tone": "professional",
+    "signature": "— Partnerships",
+    "language": "en",
+    "guardrails": {
+      "auto_send_min_confidence": 0.95,
+      "redact_pii": true,
+      "blocked_terms": ["discount", "free tier"],
+      "auto_close_after_days": 7
+    }
+  },
+  "sla": {
+    "first_response_minutes": 60,
+    "followup_hours": 12
+  },
+  "routing": {
+    "escalate": { "conditions": [] },
+    "assignee_rules": [
+      { "if": "intent == 'sales'", "assignee": "alex@" }
+    ]
+  },
+  "actions": {
+    "reply": { "mode": "always_require_approval" },
+    "create_ticket": {},
+    "create_issue": { "dedupe": true },
+    "log_feedback": { "destination": "notion" }
+  },
+  "approval_matrix": [
+    { "if": "intent == 'sales'", "required_role": "admin" }
+  ]
+}

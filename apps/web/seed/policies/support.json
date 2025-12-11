@@ -1,0 +1,36 @@
+{
+  "agent": {
+    "tone": "friendly_concise",
+    "signature": "— Mailroom Support",
+    "language": "en",
+    "guardrails": {
+      "auto_send_min_confidence": 0.88,
+      "redact_pii": true,
+      "blocked_terms": ["refund approved"],
+      "auto_close_after_days": 10
+    }
+  },
+  "sla": {
+    "first_response_minutes": 20,
+    "followup_hours": 18
+  },
+  "routing": {
+    "escalate": {
+      "conditions": [
+        { "if": "intent == 'security'", "to": "#tier2-security" }
+      ]
+    },
+    "assignee_rules": [
+      { "if": "intent == 'sales'", "assignee": "hello@" }
+    ]
+  },
+  "actions": {
+    "reply": { "mode": "draft_then_auto_send_if_confident" },
+    "create_ticket": { "provider": "zendesk" },
+    "create_issue": { "provider": "github", "dedupe": true },
+    "log_feedback": { "destination": "notion" }
+  },
+  "approval_matrix": [
+    { "if": "confidence < 0.7", "required_role": "agent" }
+  ]
+}
