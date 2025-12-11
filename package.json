@@ -1,0 +1,42 @@
+{
+  "name": "mailroom-agents",
+  "version": "1.0.0",
+  "description": "Multi-tenant SaaS where policy-controlled AI agents manage shared mailboxes",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "mailroom",
+    "saas",
+    "email",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.15.0",
+    "@supabase/supabase-js": "^2.87.1",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^25.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.22",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.559.0",
+    "next": "^16.0.8",
+    "openai": "^6.10.0",
+    "postcss": "^8.5.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3",
+    "zod": "^4.1.13"
+  }
+}
