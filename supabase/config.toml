@@ -1,0 +1,3 @@
+project_id = "mailroom-agents"
+[functions]
+edge_runtime = "v1"

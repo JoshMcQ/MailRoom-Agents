@@ -1,0 +1,37 @@
+{
+  "agent": {
+    "tone": "technical",
+    "signature": "— Bugs Desk",
+    "language": "en",
+    "guardrails": {
+      "auto_send_min_confidence": 0.8,
+      "redact_pii": true,
+      "blocked_terms": ["works on my machine"],
+      "auto_close_after_days": 14
+    }
+  },
+  "sla": {
+    "first_response_minutes": 30,
+    "followup_hours": 24
+  },
+  "routing": {
+    "escalate": {
+      "conditions": [
+        { "if": "intent == 'bug' && confidence > 0.8", "to": "#eng-bugs" }
+      ]
+    },
+    "assignee_rules": []
+  },
+  "actions": {
+    "reply": { "mode": "draft_only" },
+    "create_issue": {
+      "provider": "github",
+      "repo": "org/product",
+      "dedupe": true
+    },
+    "log_feedback": { "destination": "notion" }
+  },
+  "approval_matrix": [
+    { "if": "true", "required_role": "agent" }
+  ]
+}

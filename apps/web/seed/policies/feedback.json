@@ -1,0 +1,33 @@
+{
+  "agent": {
+    "tone": "casual",
+    "signature": "— Feedback Crew",
+    "language": "en",
+    "guardrails": {
+      "auto_send_min_confidence": 0.85,
+      "redact_pii": true,
+      "blocked_terms": [],
+      "auto_close_after_days": 5
+    }
+  },
+  "sla": {
+    "first_response_minutes": 120,
+    "followup_hours": 24
+  },
+  "routing": {
+    "escalate": {
+      "conditions": [
+        { "if": "sentiment == 'neg'", "to": "#voice-of-customer" }
+      ]
+    },
+    "assignee_rules": []
+  },
+  "actions": {
+    "reply": { "mode": "draft_then_auto_send_if_confident" },
+    "log_feedback": {
+      "destination": "notion",
+      "database_id": "feedback-db"
+    }
+  },
+  "approval_matrix": []
+}
